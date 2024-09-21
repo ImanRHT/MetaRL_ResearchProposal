@@ -145,46 +145,46 @@ sort&compress % as sort but in addition multiple numerical citations
 
 Mobile Edge Computing is emerging as a promising paradigm to enhance the computational capacity of mobile devices by offloading tasks to nearby edge servers. This paradigm aims to reduce latency, energy consumption, and improve Quality of Experience (QoE) for end-users. However, one of the major challenges in MEC is the efficient decision-making process for computation offloading, considering the dynamic nature of the network, user demands, and limited resources. Traditional offloading strategies, which often rely on heuristic or single-agent models, fail to capture the com- plexity and stochastic nature of modern MEC systems. 
 
-
-	
-\vspace{8mm}
-
-\noindent\textbf{\large Motivation}
-
-\vspace{1.5mm}
-
-The rapid growth of mobile applications, such as augmented reality, real-time gaming, and high-definition video streaming, has placed significant demands on the computational resources of mobile devices. While the processing power of these devices has improved, there remain significant limitations in battery life, processing speed, and memory capacity. Mobile Edge Computing (MEC) has emerged as a solution, enabling computation offloading to nearby edge servers to alleviate the processing burden on mobile devices. However, the challenge lies in determining how and when to offload computational tasks efficiently, especially in a dynamic network environment with varying resources and user demands. The decision-making process becomes more complex with the presence of multiple devices competing for limited edge resources. Current solutions often employ heuristic or single-agent approaches, which are not robust in highly dynamic and multi-user MEC environments. Multi-Agent Deep Reinforcement Learning (DRL) offers a promising avenue for addressing this challenge. By allowing multiple agents (mobile devices and edge servers) to autonomously learn and adapt their offloading strategies, it becomes possible to optimize system-wide performance metrics such as energy consumption, latency, and resource utilization. 
-
 \newpage
 
+\noindent\textbf{\large Motivation:  }
+\noindent
+Meta DRL focuses on training agents that can quickly adapt to new tasks or environments with minimal additional learning. It is designed for scenarios where agents face a wide variety of tasks, and the aim is to learn a policy that generalizes well across different tasks. The primary objective is to equip the agent with meta-knowledge, allowing it to efficiently adapt to new tasks by leveraging past learning experiences. In MEC, a meta-trained agent could adapt its offloading strategy efficiently when moving between different environments (e.g., from urban to rural networks), quickly optimizing its offloading decisions in unfamiliar settings.
+
+
+\vspace{3mm}
 
 
 
-
-
-
-\vspace{1mm}
-
-\noindent\textbf{\large Problem Statement}
+\noindent\textbf{\large Problem Statement: } Efficient task offloading is crucial to ensure seamless resource distribution in MEC.
+Typically, the overall Resource Management process involves three layers of heterogeneous Resource scheduling decisions (\textbf{P1}, \textbf{P2}, \textbf{P3}), each of which performs in a specific collaboration manner. \vspace{-2mm}
 
 \begin{itemize}
 	
-	\item \textbf{P1. Edge-cloud service placement.}
-	Efficient task offloading is crucial to ensure seamless resource distribution in MEC. Device-edge task offloading enables devices to independently make decisions on offloading resource-intensive tasks to nearby edge servers, fostering efficient utilization of available resources.
+	\item \textbf{P1. Edge-cloud service placement. } %In MEC systems, clouds have sufficient resources, while edge servers are resource-limited. 
+	The cloud caches all services with sufficient storage spaces. Considering storage limits of edge servers, only a subset of services can be placed in each edge server. Services can be migrated from a cloud to an edge or between edge servers, which requires efficient collaboration.\vspace{-2mm}
 	
-	\item\textbf{P2. Edge-edge computation offloading.} 
-	Task offloading leverages edge-edge collaborations, where tasks initially received by a local edge server can be offloaded to neighboring servers with underutilized resources, ensuring better resource utilization. The task offloading decision-making process focuses on efficiently distributing tasks among edge servers. Offloading tasks between edge servers requires communication resources and may introduce additional transmission delay, which should be taken into account when designing offloading strategies.
+	\item\textbf{P2. Edge-edge computation offloading. }  The task offloading decision-making process focuses on efficiently distributing tasks among edge servers. Edge-edge collaborations enables edge servers to offloade their computation workload to neighboring servers, ensuring better resource utilization. \vspace{-2mm}
 	
-	\item\textbf{P3. Intra-edge resource allocation.} On edge servers, there may be several tasks competing for resources among offloaded tasks on the same server. Intra edge there is a resource competition among offloaded tasks on the same server. Intra-edge resource allocation aims to determine how resources should be allocated to each offloaded task.
+	\item\textbf{P3. Intra-edge resource allocation. } On edge servers, there may be several tasks competing for resources among offloaded tasks on the same server. Intra edge there is a resource competition among offloaded tasks on the same server. Intra-edge resource allocation aims to determine how resources should be allocated to each offloaded task.
 	
 \end{itemize}
 
+\vspace{0mm}
+
+\noindent\textbf{\large Problem Model: } To apply Meta-RL for address combination of sub-problems  \textbf{P1},  \textbf{P2}, and \textbf{P3}, each problems can be formoulated as an individual MDP models. The MDP learning process shoud be decomposed into two parts: \textbf{learning a meta policy efficiently across all MDPs} and \textbf{learning a specific strategy for an MDP quickly based on the learned meta policy}.
+\noindent
+
 \vspace{5mm}
 
-\noindent\textbf{\large Research Methodology}
+\noindent\textbf{\large Research Methodology:}
 
-\begin{enumerate} \item \textbf{Problem Formulation:} We will model the computation offloading problem as a Markov Decision Process (MDP) where multiple agents (mobile devices) interact with the environment (edge servers and network resources). \item \textbf{Algorithm Design:} We will develop a Multi-Agent Deep Reinforcement Learning algorithm using techniques such as Proximal Policy Optimization (PPO) or Deep Q-Networks (DQN), with a focus on communication and collaboration between agents. \item \textbf{Simulation Environment:} A simulated MEC environment will be developed using Python or a suitable simulation platform, where mobile devices can offload tasks to edge servers under different network conditions. \item \textbf{Performance Evaluation:} The proposed algorithm will be evaluated in terms of latency, energy consumption, and network efficiency. Comparisons with existing heuristic and DRL-based approaches will be made to assess its effectiveness. \end{enumerate}
-
+\begin{enumerate}  \item \textbf{Algorithm Design:} Developing a Multi-Agent Meta-Reinforcement Learning algorithm using techniques such as \textbf{Multi-Agent Meta-Actor and Meta-Critic Networks}, with a focus on global optimization in MEC.\vspace{-1mm}
+	
+	\item \textbf{Simulation Environment:} A simulated MEC environment will be developed using Python or a suitable simulation platform, where cload and edge servers be able to cache services and distribut tasks in whole resources, under different network conditions. 
+	
+	\item \textbf{Key Challenges:}  (a) The meta-learned policy should work well across different, unseen tasks. (b) Balancing between exploration (learning new tasks) and exploitation (using learned knowledge). 
+\end{enumerate}
 
 
 
