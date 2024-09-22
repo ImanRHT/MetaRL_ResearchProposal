@@ -107,6 +107,7 @@ sort&compress % as sort but in addition multiple numerical citations
 
 \begin{center} 
 	
+
 	
 	\vspace{-17mm}
 	
@@ -119,37 +120,12 @@ sort&compress % as sort but in addition multiple numerical citations
 	\textcolor{white}{i} \\ \LARGE Meta-Reinforcement Learning for Optimized Task Scheduling in Heterogeneous Edge Computing Systems \vspace{6mm}\\
 	
 \end{center}
-%	\hrule
-%	\vspace{0.5pt}
-%	\hrule height 1pt
-
-
-
-\vspace{-8mm}
-
-\begin{abstract}
-	\vspace{-2mm}
-	\noindent
-	Mobile edge computing often suffers from the dynamic and unknown nature of the environment such as time-varying conditions, heterogeneous devices, and frequent communication requests, imposing significant challenges on improving system performance. To meet the rapidly growing demands of computation-intensive and time-sensitive applications, Reinforcement learning \cite{mnih2015human} has been proposed as an effective tool to establish low-latency and energy-efficient networks. RL enables network entities to interact with the environment and learn an optimal decision-making policy, usually modeled as a Markov decision process \cite{puterman2014markov}.
-\end{abstract}
-
-
-
-	
-\vspace{4mm}
-
-\noindent\large\textbf{Introduction}
-
-\vspace{1.5mm}
-\normalsize
-
-Mobile Edge Computing is emerging as a promising paradigm to enhance the computational capacity of mobile devices by offloading tasks to nearby edge servers. This paradigm aims to reduce latency, energy consumption, and improve Quality of Experience (QoE) for end-users. However, one of the major challenges in MEC is the efficient decision-making process for computation offloading, considering the dynamic nature of the network, user demands, and limited resources. Traditional offloading strategies, which often rely on heuristic or single-agent models, fail to capture the com- plexity and stochastic nature of modern MEC systems. 
-
-\newpage
+\vspace{-5mm}
+\small
 
 \noindent\textbf{\large Motivation:  }
 \noindent
-Meta DRL focuses on training agents that can quickly adapt to new tasks or environments with minimal additional learning. It is designed for scenarios where agents face a wide variety of tasks, and the aim is to learn a policy that generalizes well across different tasks. The primary objective is to equip the agent with meta-knowledge, allowing it to efficiently adapt to new tasks by leveraging past learning experiences. In MEC, a meta-trained agent could adapt its offloading strategy efficiently when moving between different environments (e.g., from urban to rural networks), quickly optimizing its offloading decisions in unfamiliar settings.
+Meta DRL focuses on training agents that can quickly adapt to new tasks or environments with minimal additional learning \cite{beck2023survey}. It is designed for scenarios where agents face a wide variety of tasks, and the aim is to learn a policy that generalizes well across different tasks. The primary objective is to equip the agent with meta-knowledge, allowing it to efficiently adapt to new tasks by leveraging past learning experiences. In MEC, a meta-trained agent could adapt its offloading strategy efficiently when moving between different environments, quickly optimizing its offloading decisions in unfamiliar settings.
 
 
 \vspace{3mm}
@@ -161,31 +137,30 @@ Typically, the overall Resource Management process involves three layers of hete
 
 \begin{itemize}
 	
-	\item \textbf{P1. Edge-cloud service placement. } %In MEC systems, clouds have sufficient resources, while edge servers are resource-limited. 
-	The cloud caches all services with sufficient storage spaces. Considering storage limits of edge servers, only a subset of services can be placed in each edge server. Services can be migrated from a cloud to an edge or between edge servers, which requires efficient collaboration.\vspace{-2mm}
+	\item \textbf{P1. Edge-cloud service placement} \cite{farhadi2021service}.  %In MEC systems, clouds have sufficient resources, while edge servers are resource-limited. 
+	The cloud caches all services with sufficient storage space. Considering the storage limits of edge servers, only a subset of services can be placed in each edge server. Services can be migrated from a cloud to an edge or between edge servers, which requires efficient collaboration.\vspace{-2mm}
 	
-	\item\textbf{P2. Edge-edge computation offloading. }  The task offloading decision-making process focuses on efficiently distributing tasks among edge servers. Edge-edge collaborations enables edge servers to offloade their computation workload to neighboring servers, ensuring better resource utilization. \vspace{-2mm}
+	\item\textbf{P2. Edge-edge computation offloading} \cite{han2022edgetuner}. The task offloading decision-making process focuses on efficiently distributing tasks among edge servers. Edge-edge collaborations enable edge servers to offload their computation workload to neighboring servers, ensuring better resource utilization. \vspace{-2mm}
 	
-	\item\textbf{P3. Intra-edge resource allocation. } On edge servers, there may be several tasks competing for resources among offloaded tasks on the same server. Intra edge there is a resource competition among offloaded tasks on the same server. Intra-edge resource allocation aims to determine how resources should be allocated to each offloaded task.
+	\item\textbf{P3. Intra-edge resource allocation} \cite{xiong2020resource}. On edge servers, there may be several tasks competing for resources among offloaded tasks on the same server. Intra edge there is a resource competition among offloaded tasks on the same server. Intra-edge resource allocation aims to determine how resources should be allocated to each offloaded task.
 	
 \end{itemize}
 
 \vspace{0mm}
 
-\noindent\textbf{\large Problem Model: } To apply Meta-RL for address combination of sub-problems  \textbf{P1},  \textbf{P2}, and \textbf{P3}, each problems can be formoulated as an individual MDP models. The MDP learning process shoud be decomposed into two parts: \textbf{learning a meta policy efficiently across all MDPs} and \textbf{learning a specific strategy for an MDP quickly based on the learned meta policy}.
+\noindent\textbf{\large Problem Model: } To apply Meta RL for address combination of sub-problems  \textbf{P1},  \textbf{P2}, and \textbf{P3}, each problem can be formulated as an individual MDP model. The MDP learning process should be decomposed into two parts: \textbf{learning a meta policy efficiently across all MDPs} and \textbf{learning a specific strategy for an MDP quickly based on the learned meta policy}.
 \noindent
 
 \vspace{5mm}
 
 \noindent\textbf{\large Research Methodology:}
 
-\begin{enumerate}  \item \textbf{Algorithm Design:} Developing a Multi-Agent Meta-Reinforcement Learning algorithm using techniques such as \textbf{Multi-Agent Meta-Actor and Meta-Critic Networks}, with a focus on global optimization in MEC.\vspace{-1mm}
+\begin{enumerate}  \item \textbf{Algorithm Design:} Developing a Multi-Agent Meta-Reinforcement Learning algorithm using techniques such as \textbf{Meta-Actor and Meta-Critic Networks} \cite{ding2023multiagent}, with a focus on global optimization in MEC.\vspace{-1mm}
 	
-	\item \textbf{Simulation Environment:} A simulated MEC environment will be developed using Python or a suitable simulation platform, where cload and edge servers be able to cache services and distribut tasks in whole resources, under different network conditions. 
+	\item \textbf{Simulation Environment:} A simulated MEC environment will be developed using Python or a suitable simulation platform, where cloud and edge servers be able to cache services and distribute tasks in whole resources, under different network conditions. 
 	
 	\item \textbf{Key Challenges:}  (a) The meta-learned policy should work well across different, unseen tasks. (b) Balancing between exploration (learning new tasks) and exploitation (using learned knowledge). 
 \end{enumerate}
-
 
 
 
